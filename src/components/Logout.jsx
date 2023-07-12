@@ -1,17 +1,19 @@
 import React from "react";
 import {signOut} from "firebase/auth";
 import { auth} from "../config/firebase";
-import {  redirect } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 
 
 
 function Logout() {
 
+    const navigate = useNavigate()
+
     const logout = async () => {
         try {
             await signOut(auth);
-            redirect("/login");
+            navigate('/')
         } catch (err) {
             console.error(err);
             alert(`${err}`);

@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
-import { redirect} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
 function Login(){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate()
 
     const logIn = async ()=>{
         try {
           
             await signInWithEmailAndPassword(auth, email , password);
-            redirect("/home");
+            navigate('/home')
 
           } catch (err) {
             console.error(err);
