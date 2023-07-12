@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { signInWithEmailAndPassword , signInWithPopup } from "firebase/auth";
+import { auth , googleProvider } from "../config/firebase";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -22,6 +22,20 @@ function Login(){
           }
     }
 
+    const signInWithGoogle = async () => {
+      try {
+        
+        await signInWithPopup(auth, googleProvider);
+        
+        alert("Sign In successfull!!");
+        navigate("/home");
+  
+      } catch (err) {
+        console.error(err);
+        alert(`${err}`);
+      }
+    };
+
     return(<div>
         <input
           className="element"
@@ -37,6 +51,8 @@ function Login(){
           value={password}
         />
         <button className="element" onClick={logIn}> Login</button>
+
+        <button className="element" onClick={signInWithGoogle}> Sign In With Google</button>
     </div>);
 }
 
