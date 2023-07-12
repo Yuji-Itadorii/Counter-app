@@ -18,7 +18,8 @@ export const Auth = () => {
   const signIn = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-
+      
+      alert("Sign In successfull!!");
       redirect("/home");
 
     } catch (err) {
@@ -29,8 +30,10 @@ export const Auth = () => {
 
   const signInWithGoogle = async () => {
     try {
+      
       await signInWithPopup(auth, googleProvider);
-
+      
+      alert("Sign In successfull!!");
       redirect("/home");
 
     } catch (err) {

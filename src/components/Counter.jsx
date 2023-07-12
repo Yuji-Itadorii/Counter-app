@@ -18,7 +18,8 @@ function Counter() {
             setCount(val+1);
         }
         else if(e.target.name === "sub"){
-            setCount(count-1);
+            var vsl = Number(count);
+            setCount(vsl-1);
         }
         else if(e.target.name === "reset"){
             setCount(0);
